@@ -40,3 +40,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 services/ui-service/node_modules
+services/ui-service/.next
