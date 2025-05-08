@@ -13,13 +13,21 @@
 
 # testing
 /coverage
+**/coverage/
+**/playwright-report/
+**/reports/
+**/test-results/
 
 # next.js
 /.next/
 /out/
+**/.next/
+**/out/
 
 # production
 /build
+**/build/
+**/dist/
 
 # misc
 .DS_Store
