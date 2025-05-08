@@ -1,0 +1,15 @@
+import type { Segment } from '../../../../types/model/Segment.js';
+import type { SegmentHls } from '../../../../types/mapper/hls/SegmentHls.js';
+/**
+ * @internal
+ *
+ * Format the hls segments into the ham segments.
+ *
+ * @param segments - List of HLS segments
+ * @returns ham formatted list of segments
+ *
+ * @group CMAF
+ * @alpha
+ */
+export declare function formatSegments(segments: SegmentHls[]): Segment[];
+//# sourceMappingURL=formatSegments.d.ts.map

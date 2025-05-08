@@ -1,0 +1,7 @@
+export type ContentComponent = {
+    $: {
+        contentType: string;
+        id: string;
+    };
+};
+//# sourceMappingURL=ContentComponent.d.ts.map

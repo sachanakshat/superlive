@@ -1,0 +1,25 @@
+# Binaries
+catalog-service
+*.exe
+*.exe~
+*.so
+*.dylib
+*.dll
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Dependency directories
+vendor/
+
+# Media directory
+media/
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo

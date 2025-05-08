@@ -1,27 +1,32 @@
 {
-  "name": "superlive",
-  "version": "0.1.0",
-  "private": true,
+  "name": "superlive-platform",
+  "version": "1.0.0",
+  "description": "SuperLive streaming platform",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "install:test": "cd services/test-service && npm install",
+    "install:all": "npm run install:test && npm run install:ui",
+    "install:ui": "cd services/ui-service && npm install",
+    "test": "cd services/test-service && npm run test",
+    "test:ui": "cd services/test-service && npm run test:ui",
+    "test:api": "cd services/test-service && npm run test:api",
+    "build:ui": "cd services/ui-service && npm run build",
+    "build": "docker-compose build",
+    "dev": "docker-compose up -d",
+    "build-and-test": "npm run build && docker-compose up -d && sleep 10 && npm test",
+    "report": "cd services/test-service && npm run report"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/superlive.git"
+  },
+  "keywords": [
+    "streaming",
+    "video",
+    "platform"
+  ],
+  "author": "",
+  "license": "MIT",
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.3.0"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
-    "eslint": "^9",
-    "eslint-config-next": "15.3.0",
-    "@eslint/eslintrc": "^3"
+    "date-fns": "^4.1.0"
   }
 }

@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  # Upload Service
+  upload-service:
+    build:
+      context: ./services/upload-service
+    ports:
+      - "8080:8080"
+    volumes:
+      - media_data:/app/media
+    environment:
+      - PORT=8080
+    restart: unless-stopped
+
+  # Catalog Service
+  catalog-service:
+    build:
+      context: ./services/catalog-service
+    ports:
+      - "8081:8081"
+    volumes:
+      - media_data:/app/media
+    environment:
+      - PORT=8081
+    restart: unless-stopped
+
+  # Encoding Service
+  encoding-service:
+    build:
+      context: ./services/encoding-service
+    ports:
+      - "8082:8082"
+    volumes:
+      - media_data:/app/media
+      - encoded_data:/app/encoded
+      - dash_data:/app/encoded/dash
+      - hls_data:/app/encoded/hls
+    environment:
+      - PORT=8082
+    restart: unless-stopped
+    depends_on:
+      - upload-service
+
+  # UI Service
+  ui-service:
+    build:
+      context: ./services/ui-service
+    ports:
+      - "3000:3000"
+    environment:
+      - UPLOAD_SERVICE_URL=http://upload-service:8080
+      - CATALOG_SERVICE_URL=http://catalog-service:8081
+      - ENCODING_SERVICE_URL=http://encoding-service:8082
+      - NEXT_PUBLIC_UPLOAD_SERVICE_URL=http://192.168.1.11:8080
+      - NEXT_PUBLIC_CATALOG_SERVICE_URL=http://192.168.1.11:8081
+      - NEXT_PUBLIC_ENCODING_SERVICE_URL=http://192.168.1.11:8082
+    depends_on:
+      - upload-service
+      - catalog-service
+      - encoding-service
+    restart: unless-stopped
+
+# Volumes for persistent data storage
+volumes:
+  media_data:
+  encoded_data:
+  dash_data:
+  hls_data: 

@@ -1,0 +1,7 @@
+export type Role = {
+    $: {
+        schemeIdUri: string;
+        value: string;
+    };
+};
+//# sourceMappingURL=Role.d.ts.map

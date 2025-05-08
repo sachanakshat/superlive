@@ -1,0 +1,5 @@
+export type Byterange = {
+    length: number;
+    offset: number;
+};
+//# sourceMappingURL=Byterange.d.ts.map

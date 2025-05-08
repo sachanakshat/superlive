@@ -1,0 +1,2 @@
+docker-compose down -v ui-service && docker-compose build --no-cache ui-service && docker-compose up -d ui-service
+docker-compose stop ui-service && docker-compose rm -f ui-service && docker-compose up -d ui-service
